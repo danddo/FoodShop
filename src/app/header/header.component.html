@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a routerLink="/" class="navbar-brand">Recipe Book</a>
+            <a routerLink="/" class="navbar-brand">Food Shop</a>
         </div>
         <div class="navbar-default">
             <ul class="nav navbar-nav">
@@ -10,10 +10,10 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class= "dropdown" appDropdown>
-                    <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+                    <a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                         <li><a style = "cursor:pointer">Saving Data</a></li>
-                         <li><a style = "cursor:pointer">Fetching Data</a></li>
+                         <li><a style = "cursor:pointer" (click)="onSaveData()">Saving Data</a></li>
+                         <li><a style = "cursor:pointer"(click)= "onFetchData()">Fetching Data</a></li>
                      </ul>
                 </li>
             </ul>
