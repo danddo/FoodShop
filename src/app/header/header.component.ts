@@ -1,5 +1,5 @@
 import { Component, OnInit,} from '@angular/core';
-import { ServerService } from '../shared/server.service';
+
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { ServerService } from '../shared/server.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private serverService:ServerService) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onFetchData(){
-    this.serverService.getRecipes();
+    
   }
 
 

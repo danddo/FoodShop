@@ -1,26 +1,18 @@
 import { Recipe } from "./recipe.model";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
+ 
+@Injectable()
 export class RecipeService{
+    constructor(private http : HttpClient){}
    recipesChanged = new Subject<Recipe[]>();
-   private  recipes: Recipe[] = [
-        new Recipe(
-            "Test-Recipe",
-            'this is a test',
-            "https://cdn.pixabay.com/photo/2015/12/20/17/11/fish-1101436_960_720.jpg",
-            [new Ingredient('Cheese',1),new Ingredient('Tomato',3)]),
-            
-        new Recipe(
-            "Test-Recipe2",
-            'this is a test2',
-            "https://cdn.pixabay.com/photo/2015/12/20/17/11/fish-1101436_960_720.jpg",
-            [new Ingredient('Meat',2),new Ingredient('Buns',2)]),
-    ];
+   public  recipes: Recipe[] =[];
 
     getRecipes(){
-        return this.recipes.slice();
+        return this.http.get<Recipe[]>('http://localhost:8000/recipes');
     }
     getRecipe(index:number){
         return this.recipes[index];
@@ -40,12 +32,5 @@ export class RecipeService{
         this.recipes.splice(index,1)
         this.recipesChanged.next(this.recipes.slice());
     }
-
-    fetchRecipes(recipes){
-        this.recipes = recipes;
-        this.recipesChanged.next(this.recipes.slice());
-
-    }
-
 
 }
