@@ -27,6 +27,7 @@ export class RecipeDetailComponent implements OnInit {
   OnSendToShoppingList(){
     for (let ingre of this.recipe.ingredients){
     this.slService.addNewIngredient(ingre);
+    //adnlb
     }
   }
 
